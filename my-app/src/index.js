@@ -4,12 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Calculator from './Calculator/Calculator';
+import Slider from './Slider/Slider';
 
 ReactDOM.render(
     <div>
 
     <App />
     <Calculator />
+    <Slider />
     </div>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

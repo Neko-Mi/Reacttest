@@ -16,16 +16,17 @@ class Calculator extends Component {
     this.handleNumber2Change = this.handleNumber2Change.bind(this);
     this.handleOperationChange = this.handleOperationChange.bind(this);
   }
-  showResult(){
+
+  showResult(operation, number1, number2){
 
     let result = 0;
 
-    switch (this.state.operation) {
+    switch (operation) {
       case "+":
-        result = this.state.number1 + this.state.number2;
+        result = number1 + number2;
         break;
       case "-":
-        result = this.state.number1 - this.state.number2;
+        result = number1 - number2;
         break;
       default:
         break;
@@ -33,14 +34,38 @@ class Calculator extends Component {
     this.setState({result: result});
   }
   handleNumber1Change(e){
-    this.setState({number1: +e.currentTarget.value});
+    
+    let number1 = +e.currentTarget.value
+     
+    this.setState({number1: number1});
+
+    let {number2, operation} = this.state;
+
+    this.showResult(operation, number1, number2 )
   }
+
   handleNumber2Change(e){
-    this.setState({number2: Number(e.currentTarget.value)});
+
+    let number2 = +e.currentTarget.value;
+
+    this.setState({number2: number2});
+
+    let {number1, operation} = this.state;
+
+    this.showResult(operation, number1, number2 )
   }
+
   handleOperationChange(e){
-    this.setState({operation: e.currentTarget.value});
+    
+    let operation = e.currentTarget.value;
+
+    this.setState({operation: operation});
+
+    let {number1, number2} = this.state;
+
+    this.showResult(operation, number1, number2 )
   }
+
   render() {
     return (
       <div className="Calculator">
@@ -60,7 +85,7 @@ class Calculator extends Component {
        </div>
         
         <div>
-          <button onClick={this.showResult}>Get result</button>
+          {/* <button onClick={this.showResult}>Get result</button> */}
         <div>
           Result: <span>{this.state.result}</span>
         </div>
