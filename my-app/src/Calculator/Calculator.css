@@ -1,0 +1,9 @@
+.Calculator{
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+}
+.Calculator div {
+  margin: 10px;
+}
